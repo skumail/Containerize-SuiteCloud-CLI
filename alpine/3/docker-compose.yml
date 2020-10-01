@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+  suitecloud-cli:
+    image: skumail/suitecloud-cli:1.1.1-alpine
+    volumes:
+      - suitecloud-cli-config:/root
+      - .:/pwd
+volumes:
+  suitecloud-cli-config:
+    name: suitecloud-cli-config
