@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   suitecloud-cli:
-    image: skumail/suitecloud-cli:1.1.1-alpine
+    image: skumail/suitecloud-cli:1.1.2-alpine
     volumes:
       - suitecloud-cli-config:/root
       - .:/pwd
