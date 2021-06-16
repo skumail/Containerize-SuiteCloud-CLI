@@ -10,18 +10,15 @@ You don't need to have node and JDK  installed on your system in order to use su
 ```shell
 docker run \
        --rm -it \
-       -v ~:/root \
-       -v $(pwd):/pwd \
+       -v $(pwd):/usr/src/app \
        skumail/suitecloud-cli
 ```
 
-`--rm` removes the container after running, `-it` makes it interactive, `-v ~:/root` mounts your home directory (for cli config) to the
-home directory inside the container, `-v $(pwd):/pwd` mounts current directory inside the container. If you want to store the config in another place, mount another directory: 
+`--rm` removes the container after running, `-it` makes it interactive, `-v $(pwd):/usr/src/app` mounts current directory inside the container. If you want to store the config in another place, mount another directory: 
  
  ```shell
  docker run \
         --rm -it \
-        -v /path/to/cli-config:/root \
         skumail/suitecloud-cli
  ```
 
@@ -32,8 +29,8 @@ docker volume create suitecloud-cli-config
 
 docker run \
        --rm -it \
-       -v suitecloud-cli-config:/root \
-       -v $(pwd):/pwd \
+       -v suitecloud-cli-config:/home/node/.suitecloud-sdk \
+       -v $(pwd):/usr/src/app \
        skumail/suitecloud-cli
 ```
 
@@ -43,8 +40,8 @@ Creates a SuiteCloud project, either a SuiteApp or an account customization proj
 ```shell
 docker run \
        --rm -it \
-       -v suitecloud-cli-config:/root \
-       -v $(pwd):/pwd \
+       -v suitecloud-cli-config:/home/node/.suitecloud-sdk \
+       -v $(pwd):/usr/src/app \
        skumail/suitecloud-cli \
        project:create -i
 ```
@@ -53,8 +50,8 @@ Sets up an account to use with the SuiteCloud CLI for Node.js.
 ```shell
 docker run \
        --rm -it \
-       -v suitecloud-cli-config:/root \
-       -v $(pwd):/pwd \
+       -v suitecloud-cli-config:/home/node/.suitecloud-sdk \
+       -v $(pwd):/usr/src/app \
        skumail/suitecloud-cli \
        account:setup -i
 ```
@@ -64,8 +61,8 @@ Deploys the folder containing the project.
 ```shell
 docker run \
        --rm -it \
-       -v suitecloud-cli-config:/root \
-       -v $(pwd):/pwd \
+       -v suitecloud-cli-config:/home/node/.suitecloud-sdk \
+       -v $(pwd):/usr/src/app \
        skumail/suitecloud-cli \
        project:deploy -i
 ```
