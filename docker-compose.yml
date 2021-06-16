@@ -2,10 +2,10 @@ version: '3.4'
 
 services:
   suitecloud-cli:
-    image: skumail/suitecloud-cli
+    image: skumail/suitecloud-cli:latest
     volumes:
-      - suitecloud-cli-config:/root
-      - .:/pwd
+      - suitecloud-cli-config:/home/node/.suitecloud-sdk
+      - .:/usr/src/app
 volumes:
   suitecloud-cli-config:
     name: suitecloud-cli-config
