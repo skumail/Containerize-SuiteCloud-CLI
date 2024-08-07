@@ -1,4 +1,4 @@
-FROM node:18.17.1-alpine3.18
+FROM node:18.20.4-alpine3.20
 
 LABEL org.opencontainers.image.authors="skumail@folio3.com"
 
@@ -6,7 +6,9 @@ ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
 
 ENV PATH=$PATH:/home/node/.npm-global/bin
 
-RUN apk add --no-cache openjdk17-jdk
+RUN apk add --no-cache dbus openjdk17-jdk
+
+RUN dbus-uuidgen --ensure
 
 USER node
 
